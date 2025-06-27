@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang=en>
+<head>
+  <meta charset=UTF-8>
+  <meta name=viewport content=width=device-width, initial-scale=1.0>
+  <title>Dashboard - Evergreen University</title>
+<link rel=icon href=img/evergreenlogo.png type=image/png>
+  <style>
+    body {
+    font-family:Arial, sans-serif;
+    margin:0;
+    padding:0;
+    background:#F5ECD5;
+  }
+
+  header {
+    background-color:#626F47;
+    color:white;
+    padding:20px;
+    text-align:center;
+  }
+
+  nav {
+    background-color:#A4B465;
+    display:flex;
+    flex-wrap:wrap;
+    justify-content:center;
+  }
+
+  nav a {
+    color:white;
+    text-decoration:none;
+    padding:14px 20px;
+    display:block;
+  }
+
+  nav a:hover {
+    background-color:#626F47;
+  }
+
+  footer {
+    background-color:#626F47;
+    color:white;
+    text-align:center;
+    padding:10px;
+    margin-top:40px;
+  }
+
+  @media (max-width: 600px) {
+    nav {
+      flex-direction:column;
+    }
+  }
+    main {
+      padding:40px;
+      max-width:800px;
+      margin:auto;
+      font-family:Arial, sans-serif;
+      text-align:center;
+    }
+
+    #greeting {
+      font-size:24px;
+      color:#626F47;
+      margin-bottom:20px;
+    }
+
+    .info-box {
+      background-color:#fff;
+      border:1px solid #ddd;
+      border-radius:8px;
+      padding:20px;
+      margin:20px 0;
+      box-shadow:0 2px 5px rgba(0,0,0,0.1);
+    }
+  </style>
+</head>
+<body>
+<header>
+  <a href="universityhome.html" style="color:white; text-decoration:none;">
+    <h1>Evergreen University</h1></a>
+  <p>Nurturing Growth Through Education</p>
+</header>
+
+<nav>
+  <a href="universityhome.html">Home</a>
+  <a href="universityabout.html">About Us</a>
+  <a href="universitycourse.html">Courses</a>
+  <a href="universityform.html">Register</a>
+  <a href="universitycourse.html">Dashboard</a>
+  <a href="universitycontact.html">Contact</a>
+</nav>
+
+<main>
+  <div id="greeting"></div>
+
+  <div class="info-box">
+    <h3>Today's Tip</h3>
+    <p id="tip">Loading...</p>
+  </div>
+
+  <div class="info-box">
+    <h3>Enrolled Courses</h3>
+    <ul>
+      <li>Environmental Science</li>
+      <li>Data Science & AI</li>
+    </ul>
+  </div>
+</main>
+
+<footer>
+  &copy; 2025 Evergreen University. All rights reserved.
+</footer>
+
+<script>
+  const greetingElement = document.getElementById("greeting");
+  const now = new Date();
+  const hour = now.getHours();
+  let greetingText = "Welcome!";
+
+  if (hour < 12) {
+    greetingText = "Good morning, student!";
+  } else if (hour < 18) {
+    greetingText = "Good afternoon, student!";
+  } else {
+    greetingText = "Good evening, student!";
+  }
+
+  greetingElement.textContent = greetingText;
+
+  const tips = [
+    "Start your day with curiosity, not pressure.",
+    "Breathe deeply and study mindfully.",
+    "Growth takes time. Stay consistent.",
+    "You’re allowed to not know everything yet.",
+    "A clear mind learns best, stay present."
+  ];
+
+  const tipElement = document.getElementById("tip");
+  const randomIndex = Math.floor(Math.random() * tips.length);
+  tipElement.textContent = tips[randomIndex];
+</script>
+</body>
+</html>

@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html lang=en>
+<head>
+  <meta charset=UTF-8>
+  <meta name=viewport content=width=device-width, initial-scale=1.0>
+  <title>Register - Evergreen University</title>
+<link rel=icon href=img/evergreenlogo.png type=image/png>
+  <style>
+    body {
+    font-family:Arial, sans-serif;
+    margin:0;
+    padding:0;
+    background:#F5ECD5;
+  }
+
+  header {
+    background-color:#626F47;
+    color:white;
+    padding:20px;
+    text-align:center;
+  }
+
+  nav {
+    background-color:#A4B465;
+    display:flex;
+    flex-wrap:wrap;
+    justify-content:center;
+  }
+
+  nav a {
+    color:white;
+    text-decoration:none;
+    padding:14px 20px;
+    display:block;
+  }
+
+  nav a:hover {
+    background-color:#626F47;
+  }
+
+  footer {
+    background-color:#626F47;
+    color:white;
+    text-align:center;
+    padding:10px;
+    margin-top:40px;
+  }
+
+  @media (max-width: 600px) {
+    nav {
+      flex-direction:column;
+    }
+  }
+    main {
+      padding:30px;
+      max-width:600px;
+      margin:auto;
+      font-family:Arial, sans-serif;
+      background-color:#fff;
+      border-radius:8px;
+      box-shadow:0 4px 8px rgba(0,0,0,0.1);
+    }
+
+    form label {
+      display:block;
+      margin-top:15px;
+      font-weight:bold;
+    }
+
+    input, select, textarea {
+      width:100%;
+      padding:10px;
+      margin-top:5px;
+      border-radius:4px;
+      border:1px solid #ccc;
+      box-sizing:border-box;
+    }
+
+    input[type="submit"] {
+      background-color:#A4B465;
+      color:white;
+      cursor:pointer;
+      margin-top:20px;
+      border:none;
+    }
+
+    input[type="submit"]:hover {
+      background-color:#626F47;
+    }
+
+    #message {
+        display: none;
+        background: #f1f1f1;
+        padding: 10px;
+        margin-top: 10px;
+        border-radius: 5px;
+        font-size: 14px;
+      }
+
+      .valid {
+        color: green;
+      }
+
+      .invalid {
+        color: red;
+      }
+  </style>
+</head>
+
+<body>
+<header>
+  <a href="universityhome.html" style="color:white; text-decoration:none;">
+    <h1>Evergreen University</h1></a>
+  <p>Nurturing Growth Through Education</p>
+</header>
+
+<nav>
+  <a href="universityhome.html">Home</a>
+  <a href="universityabout.html">About Us</a>
+  <a href="universitycourse.html">Courses</a>
+  <a href="universityform.html">Register</a>
+  <a href="universitydashboard.html">Dashboard</a>
+  <a href="universitycontact.html">Contact</a>
+</nav>
+
+<main>
+  <h2>Student Registration</h2>
+  <form>
+    <label for="fname">First Name:</label>
+    <input type="text" id="fname" name="fname" required>
+
+    <label for="lname">Last Name:</label>
+    <input type="text" id="lname" name="lname" required>
+
+    <label for="gender">Gender:</label>
+    <select id="gender" name="gender" required>
+      <option value="">Select</option>
+      <option value="female">Female</option>
+      <option value="male">Male</option>
+      <option value="other">Other</option>
+    </select>
+
+    <label for="email">Email:</label>
+    <input type="email" id="email" name="email" required>
+
+    <label for="dob">Date of Birth:</label>
+    <input type="date" id="dob" name="dob" required>
+
+    <label for="course">Interested Course:</label>
+    <select id="course" name="course" required>
+      <option value="">Select</option>
+      <option value="env_sci">Environmental Science</option>
+      <option value="botany">Botanical Studies</option>
+      <option value="data_ai">Data Science & AI</option>
+      <option value="media">Digital Media & Design</option>
+    </select>
+
+    <label for="address">Address:</label>
+    <textarea id="address" name="address" rows="3"></textarea>
+
+    <label for="password">Password:</label>
+    <input type="password" id="password" name="password">
+
+    <div id="message">
+      <p>Password must contain:</p>
+      <p id="letter" class="invalid">❌ a lowercase letter</p>
+      <p id="capital" class="invalid">❌ a capital letter</p>
+      <p id="number" class="invalid">❌ a number</p>
+      <p id="length" class="invalid">❌ at least 8 characters</p>
+    </div>
+
+    <script>
+      const password = document.getElementById("password");
+      const message = document.getElementById("message");
+      const letter = document.getElementById("letter");
+      const capital = document.getElementById("capital");
+      const number = document.getElementById("number");
+      const length = document.getElementById("length");
+
+      password.onfocus = function () {
+        message.style.display = "block";
+      }
+
+      password.onblur = function () {
+        message.style.display = "none";
+      }
+
+      password.onkeyup = function () {
+        const lowerCaseLetters = /[a-z]/g;
+        if(password.value.match(lowerCaseLetters)) {
+          letter.classList.remove("invalid");
+          letter.classList.add("valid");
+          letter.innerHTML = "✅ a lowercase letter";
+        } else {
+          letter.classList.remove("valid");
+          letter.classList.add("invalid");
+          letter.innerHTML = "❌ a lowercase letter";
+        }
+
+        const upperCaseLetters = /[A-Z]/g;
+        if(password.value.match(upperCaseLetters)) {
+          capital.classList.remove("invalid");
+          capital.classList.add("valid");
+          capital.innerHTML = "✅ a capital letter";
+        } else {
+          capital.classList.remove("valid");
+          capital.classList.add("invalid");
+          capital.innerHTML = "❌ a capital letter";
+        }
+
+        const numbers = /[0-9]/g;
+        if(password.value.match(numbers)) {
+          number.classList.remove("invalid");
+          number.classList.add("valid");
+          number.innerHTML = "✅ a number";
+        } else {
+          number.classList.remove("valid");
+          number.classList.add("invalid");
+          number.innerHTML = "❌ a number";
+        }
+
+        if(password.value.length >= 8) {
+          length.classList.remove("invalid");
+          length.classList.add("valid");
+          length.innerHTML = "✅ at least 8 characters";
+        } else {
+          length.classList.remove("valid");
+          length.classList.add("invalid");
+          length.innerHTML = "❌ at least 8 characters";
+        }
+      }
+    </script>
+
+    <input type="submit" value="Register">
+  </form>
+</main>
+
+<footer>
+  &copy; 2025 Evergreen University. All rights reserved.
+</footer>
+</body>
+</html>
